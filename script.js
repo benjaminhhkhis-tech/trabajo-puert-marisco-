@@ -1,51 +1,59 @@
-const formulario = document.getElementById("formulario");
+// Registro
 
-formulario.addEventListener("submit", function(e){
+document.getElementById("formulario")
+.addEventListener("submit", function(e){
 
-e.preventDefault();
+    e.preventDefault();
 
-let nombre = document.getElementById("nombre").value;
-let correo = document.getElementById("correo").value;
+    let nombre =
+    document.getElementById("nombre").value;
 
-if(nombre === "" || correo === ""){
-alert("Complete todos los campos");
-return;
-}
-
-localStorage.setItem("cliente", nombre);
-
-document.getElementById("mensaje").innerHTML =
-"✅ Gracias por registrarte, " + nombre;
-
-formulario.reset();
+    document.getElementById("mensaje").innerHTML =
+    "✅ Bienvenido " + nombre;
 
 });
 
-function visitas(){
+// Pedido
 
-let total = localStorage.getItem("visitas");
+function calcularTotal(){
 
-if(total == null){
-total = 1;
-}else{
-total++;
+    let precio =
+    parseFloat(
+        document.getElementById("platillo").value
+    );
+
+    let cantidad =
+    parseInt(
+        document.getElementById("cantidad").value
+    );
+
+    let total = precio * cantidad;
+
+    document.getElementById("resultado").innerHTML =
+    "💰 Total a pagar: $" +
+    total.toFixed(2);
+
 }
 
-localStorage.setItem("visitas", total);
+// Reserva
 
-document.getElementById("visitas").innerHTML =
-"Visitas al sitio: " + total;
+function reservarMesa(){
+
+    let nombre =
+    document.getElementById("nombreReserva").value;
+
+    document.getElementById("mensajeReserva").innerHTML =
+    "🍽️ Mesa reservada para " + nombre;
 
 }
 
-visitas();
+// Reloj
 
 setInterval(function(){
 
-let hora = new Date();
+    let hora = new Date();
 
-document.getElementById("reloj").innerHTML =
-"Hora actual: " + hora.toLocaleTimeString();
+    document.getElementById("reloj").innerHTML =
+    "🕒 " + hora.toLocaleTimeString();
 
 },1000);
-
