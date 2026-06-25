@@ -123,7 +123,7 @@ console.log("- Calidad");
 console.log("- Respeto");
 console.log("- Trabajo en equipo");
 
-console.log("
+
 
 console.log("Gracias por visitar Puerto Marisco");
 console.log("¡Sabor salvadoreño del mar a su mesa!");
